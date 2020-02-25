@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    {{ $user -> username}}
+                    <h1>{{ $user -> username}}</h1>
+                    <h2>{{ $user -> profile -> title}}</h2>
+                    <p>{{ $user -> profile -> description}}</p>
+                    <p>{{ $user -> profile -> url}}</p>
                 </div>
             </div>
         </div>
