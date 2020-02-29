@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header"><a href="{{ route('posts.create') }}">Add New Post</a></div>
+            <div class="card-header">
+                <a href="{{ route('profile.edit', $user) }}" class="">Edit Profile</a>
+                <a href="{{ route('posts.create') }}" class="float-right">Add New Post</a>
+            </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +16,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <img src="/storage/{{$user -> profile -> image}}" alt="">
                     <h1>{{ $user -> username}}</h1>
                     <h2>{{ $user -> profile -> title}}</h2>
                     <p>{{ $user -> profile -> description}}</p>
