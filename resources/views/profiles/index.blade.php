@@ -22,7 +22,9 @@
                 <div>
                     @foreach ($user->posts as $post)
                     <div>
-                        <img style="width: 30%" src="/storage/{{ $post->image }}" alt="">
+                        <a href="{{ route('posts.show', $post) }}">
+                            <img style="width: 30%" src="/storage/{{ $post->image }}" alt="">
+                        </a>
                     </div>
 
                     @endforeach
