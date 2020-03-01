@@ -1,9 +1,8 @@
-
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row p-5">
         <div class="col-8">
             <img src="/storage/{{ $post->image }}" class="w-100">
         </div>
@@ -11,7 +10,7 @@
             <div>
                 <div class="d-flex align-items-center">
                     <div class="pr-3">
-                        profile img
+                        <img src="/storage/{{ $post->user->profile->image }}" class="rounded-circle w-100" style="max-width: 40px;">
                     </div>
                     <div>
                         <div class="font-weight-bold">

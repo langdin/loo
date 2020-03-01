@@ -1,43 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-            <div class="card-header">
-                @can ('update', $user->profile)
-                    <a href="{{ route('profile.edit', $user) }}" class="">Edit Profile</a>
-                @endcan
-                @can ('update', $user->profile)
-                    <a href="{{ route('posts.create') }}" class="float-right">Add New Post</a>
-                @endcan
-            </div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <img src="/storage/{{$user -> profile -> image}}" style="width:30%" alt="">
-                    <h1>{{ $user -> username}}</h1>
-                    <h2>{{ $user -> profile -> title}}</h2>
-                    <p>{{ $user -> profile -> description}}</p>
-                    <p>{{ $user -> profile -> url}}</p>
-                </div>
-                <div>
-                    @foreach ($user->posts as $post)
-                    <div>
-                        <a href="{{ route('posts.show', $post) }}">
-                            <img style="width: 30%" src="/storage/{{ $post->image }}" alt="">
-                        </a>
-                    </div>
-
-                    @endforeach
-                </div>
-            </div>
+<div class="container px-5">
+    <div class="row">
+        <div class="col-3 p-5">
+            <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100">
         </div>
+        <div class="col-9 pt-5">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <div class="d-flex align-items-center pb-3">
+                    <div class="h4">{{ $user->username }}</div>
+
+                </div>
+
+                @can('update', $user->profile)
+                    <a href="/p/create">Add New Post</a>
+                @endcan
+
+            </div>
+
+            @can('update', $user->profile)
+                <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
+            @endcan
+
+            <div class="d-flex">
+                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
+                <div class="pr-5"><strong>2222</strong> followers</div>
+                <div class="pr-5"><strong>333</strong> following</div>
+            </div>
+            <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
+            <div>{{ $user->profile->description }}</div>
+            <div><a href="#">{{ $user->profile->url }}</a></div>
+        </div>
+    </div>
+
+    <div class="row pt-5">
+        @foreach($user->posts as $post)
+            <div class="col-4 pb-4">
+                <a href="/p/{{ $post->id }}">
+                    <img src="/storage/{{ $post->image }}" class="w-100">
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection
