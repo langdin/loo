@@ -9,7 +9,9 @@
                 @can ('update', $user->profile)
                     <a href="{{ route('profile.edit', $user) }}" class="">Edit Profile</a>
                 @endcan
-                <a href="{{ route('posts.create') }}" class="float-right">Add New Post</a>
+                @can ('update', $user->profile)
+                    <a href="{{ route('posts.create') }}" class="float-right">Add New Post</a>
+                @endcan
             </div>
 
                 <div class="card-body">
@@ -18,7 +20,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <img src="/storage/{{$user -> profile -> image}}" alt="">
+                    <img src="/storage/{{$user -> profile -> image}}" style="width:30%" alt="">
                     <h1>{{ $user -> username}}</h1>
                     <h2>{{ $user -> profile -> title}}</h2>
                     <p>{{ $user -> profile -> description}}</p>
