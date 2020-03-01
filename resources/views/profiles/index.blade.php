@@ -6,7 +6,9 @@
         <div class="col-md-8">
             <div class="card">
             <div class="card-header">
-                <a href="{{ route('profile.edit', $user) }}" class="">Edit Profile</a>
+                @can ('update', $user->profile)
+                    <a href="{{ route('profile.edit', $user) }}" class="">Edit Profile</a>
+                @endcan
                 <a href="{{ route('posts.create') }}" class="float-right">Add New Post</a>
             </div>
 
