@@ -11,18 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
 Route::post('follow/{user}', 'FollowsController@store');
 
 // Posts routs
+Route::get('/', 'PostsController@index')->name('posts.index');
 Route::get('/p/create', 'PostsController@create')->name('posts.create');
 Route::post('/p', 'PostsController@store')->name('posts.store');
-
 Route::get('/p/{post}', 'PostsController@show')->name('posts.show');
 
 

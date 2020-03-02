@@ -173,6 +173,7 @@ return [
         loo\Providers\AuthServiceProvider::class,
         // loo\Providers\BroadcastServiceProvider::class,
         loo\Providers\EventServiceProvider::class,
+        loo\Providers\TelescopeServiceProvider::class,
         loo\Providers\RouteServiceProvider::class,
 
     ],
